@@ -7,5 +7,5 @@
 ## Install
 
 ```
-asdf plugin-add minio https://github.com/penpyt/asdf-mc.git
+asdf plugin-add mc https://github.com/penpyt/asdf-mc.git
 ```
