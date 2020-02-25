@@ -29,7 +29,7 @@ get_download_url() {
   local arch="$(get_arch)"
   local filename="mc.RELEASE.${version}"
 
-  echo "https://dl.min.io/server/mc/release/${arch}-amd64/archive/${filename}"
+  echo "https://dl.min.io/client/mc/release/${arch}-amd64/archive/${filename}"
 }
 
 
