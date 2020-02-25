@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+install_mc() {
+  local install_type=$1
+  local version=$2
+  local install_path=$3
+
+  local bin_install_path="$install_path/bin"
+  local binary_path="$bin_install_path/mc"
+  local download_url=$(get_download_url $version)
+
+  echo "Creating bin directory"
+  mkdir -p "${bin_install_path}"
+
+  echo "Downloading mc from ${download_url}"
+  curl -Lo $binary_path $download_url
+  chmod +x $binary_path
+}
+
+get_arch() {
+  uname | tr '[:upper:]' '[:lower:]'
+}
+
+get_download_url() {
+  local version=$1
+  local arch="$(get_arch)"
+  local filename="mc.RELEASE.${version}"
+
+  echo "https://dl.min.io/server/mc/release/${arch}-amd64/archive/${filename}"
+}
+
+
+install_mc $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
