@@ -4,6 +4,8 @@
 
 [Minio client](https://docs.minio.io/docs/minio-client-quickstart-guide) plugin for the [asdf](https://asdf-vm.com/) version manager.
 
+Inspired by https://github.com/aeons/asdf-minio
+
 ## Install
 
 ```
