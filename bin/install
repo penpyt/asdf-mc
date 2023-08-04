@@ -20,17 +20,21 @@ install_mc() {
   chmod +x $binary_path
 }
 
-get_arch() {
+get_kernel() {
   uname | tr '[:upper:]' '[:lower:]'
+}
+
+get_arch() {
+  uname -m | tr '[:upper:]' '[:lower:]'
 }
 
 get_download_url() {
   local version=$1
+  local kernel="$(get_kernel)"
   local arch="$(get_arch)"
   local filename="mc.RELEASE.${version}"
 
-  echo "https://dl.min.io/client/mc/release/${arch}-amd64/archive/${filename}"
+  echo "https://dl.min.io/client/mc/release/${kernel}-${arch}/archive/${filename}"
 }
-
 
 install_mc $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
